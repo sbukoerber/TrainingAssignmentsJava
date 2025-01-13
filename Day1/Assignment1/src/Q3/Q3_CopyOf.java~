@@ -1,0 +1,8 @@
+package Q3;
+
+public class Q3_CopyOf {
+    public static int[] copyOf(int[] array){
+
+        return Arrays.copyOf(array, array.length);
+    }
+}
