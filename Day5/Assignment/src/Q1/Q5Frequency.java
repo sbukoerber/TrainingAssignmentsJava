@@ -1,0 +1,39 @@
+package Q1;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Q5Frequency {
+    public static void main(String[] args) throws IOException {
+        File file = new File("story.txt");
+        FileWriter writer = new FileWriter(file);
+        writer.write("life is full of fun life is full of fun life is full of fun life");
+        writer.close();
+
+        // Read the file and print the frequency of each word
+        Scanner scanner = new Scanner(file);
+        Map<String, Integer> wordFreq = new HashMap<>();
+
+        while (scanner.hasNext()) {
+            String word = scanner.next().toLowerCase();
+            word = word.replaceAll("[^a-zA-Z]", ""); // remove punctuation
+
+            if (wordFreq.containsKey(word)) {
+                wordFreq.put(word, wordFreq.get(word) + 1);
+            } else {
+                wordFreq.put(word, 1);
+            }
+        }
+
+        scanner.close();
+
+        // Print the frequency of each word
+        for (Map.Entry<String, Integer> entry : wordFreq.entrySet()) {
+            System.out.println(entry.getKey() + " appear " + entry.getValue()+" times");
+        }
+    }
+}
