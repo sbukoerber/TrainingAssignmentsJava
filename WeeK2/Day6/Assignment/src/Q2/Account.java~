@@ -1,0 +1,25 @@
+package Q2;
+
+public class Company {
+    public void deposit(Account account) {
+        for (int i = 0; i < 100; i++) {
+            account.addAmount(1000);
+        }
+    }
+}
+public class Account {
+    private double balance;
+
+    public synchronized void addAmount(double amount) {
+        balance += amount;
+    }
+
+    public synchronized void subtractAmount(double amount) {
+        balance -= amount;
+    }
+
+    // getter and setter for balance
+    public double getBalance() {
+        return balance;
+    }
+}
