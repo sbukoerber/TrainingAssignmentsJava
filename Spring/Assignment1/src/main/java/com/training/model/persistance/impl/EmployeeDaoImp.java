@@ -1,0 +1,66 @@
+package com.training.model.persistance.impl;
+
+import com.training.model.persistance.Employee;
+import com.training.model.persistance.EmployeeDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class EmployeeDaoImp implements EmployeeDao {
+    private static Map<Integer, Employee> empMap;
+    private static int counter = 0;
+    @Autowired
+    public EmployeeDaoImp(Map<Integer, Employee> empMap) {
+        this.empMap = empMap;
+    }
+
+    @Configuration
+    public class AppConfig {
+
+        @Bean
+        public Map<Integer, Employee> empMap() {
+            Map<Integer, Employee> empMap = new HashMap<>();
+            empMap.put(1, new Employee(1, "Raj", "IT", 600000));
+            empMap.put(2, new Employee(2, "Ekta", "IT", 500000));
+            return empMap;
+        }
+    }
+
+//    static {
+//        empMap.put(++counter, new Employee(counter, "Raj", "IT" ,600000));
+//        empMap.put(++counter, new Employee(counter, "Ekta", "IT" ,500000));
+//    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return new ArrayList<Employee>(empMap.values());
+    }
+
+    @Override
+    public Employee addEmployee(Employee employee) {
+        employee.setId(++counter);
+        empMap.put(counter, employee);
+        return empMap.get(counter);
+    }
+
+    @Override
+    public void deleteEmployee(int id) {
+        empMap.remove(id);
+    }
+
+    @Override
+    public void updateEmployee (int id, Employee employee) {
+        empMap.put(id, employee);
+    }
+
+    @Override
+    public Employee getEmployeeById(int id) {
+        return new Employee(empMap.get(id).getId(), empMap.get(id).getName(), empMap.get(id).getDept(), empMap.get(id).getSalary());
+    }
+
+}

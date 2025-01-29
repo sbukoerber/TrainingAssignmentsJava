@@ -1,0 +1,4 @@
+package com.training.model.persistance;
+
+public class Employee {
+}
