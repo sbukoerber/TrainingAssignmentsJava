@@ -25,9 +25,9 @@ public class EmpController {
                 (employeeService.getEmployees());
     }
 
-    @Operation(summary = "Get Product by Id",
-        description = "Get product by specifying its id",
-        tags= {"tutorial", "get"})
+    @Operation(summary = : "Get Product by Id",
+        description: "Get product by specifying its id",
+        tags: {"tutorial", "get"})
 
     @ApiResponses({
             @ApiResponse(responseCode = "200" , content = {
