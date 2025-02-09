@@ -23,6 +23,7 @@ eureka:
             default:
               sliding-window-size: 10
               permitted-number-of-calls-in-half-open-state: 2
+              auto-transition-from-open-to-half-open-enabled: true
               failure-rate-threshold: 50
               wait-duration-in-open-state: 10s
 

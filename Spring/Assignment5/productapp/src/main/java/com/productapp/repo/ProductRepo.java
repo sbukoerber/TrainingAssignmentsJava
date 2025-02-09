@@ -24,5 +24,5 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
     public Product getProductById(int id);
 
     @Query("select p from Product p where p.name = ?1")
-    public Product findByName(String name);
+        public Product findByName(String name);
 }

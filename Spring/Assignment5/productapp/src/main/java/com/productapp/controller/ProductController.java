@@ -49,6 +49,7 @@ public class ProductController {
 
 //    http://localhost:8081/productapp/products/product%202
     @GetMapping("products/{name}")
+
     public Product getProductByName(@PathVariable String name) {
         return productServices.findByName(name);
     }
