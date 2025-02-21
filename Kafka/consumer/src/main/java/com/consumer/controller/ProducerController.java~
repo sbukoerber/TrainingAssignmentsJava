@@ -1,0 +1,18 @@
+package com.consumer.controller;
+
+import com.consumer.service.ProducerService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class ProducerController {
+    private ProducerService producerService;
+
+    @Autowired
+    public ProducerController(ProducerService producerService) {
+        this.producerService = producerService;
+    }
+
+    public void sendMessage(String message) {
+        producerService.sendMessage(message);
+        
+    }
+}

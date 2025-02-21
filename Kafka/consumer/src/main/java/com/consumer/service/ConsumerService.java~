@@ -1,0 +1,11 @@
+package com.consumer.service;
+
+import org.springframework.kafka.annotation.KafkaListener;
+
+public class ConsumerService {
+
+    @KafkaListener(topics = "",groupId = "t-hellp")
+    public void consumeMessage(String message) {
+        System.out.println("Consumed message: " + message);
+    }
+}
